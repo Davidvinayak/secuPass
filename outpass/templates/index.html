@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <h1 style="margin: 10px;">Welcome to SecuPass</h1>
+    <p>Your safety, our priority.</p>
+{% endblock %}
