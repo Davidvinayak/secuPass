@@ -7,6 +7,11 @@
         {% endfor %}
     {% endif %}
 
-    <h1 style="margin: 10px;">Welcome to SecuPass</h1>
+    {% if user.is_authenticated %}
+        <h1 style="margin: 10px;">Welcome to SecuPass, {{ user.username }}</h1>
+    {% else %}
+        <h1 style="margin: 10px;">Welcome to SecuPass</h1>
+    {% endif %}
+
     <p>Your safety, our priority.</p>
 {% endblock %}

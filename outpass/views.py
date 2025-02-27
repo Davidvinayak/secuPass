@@ -1,8 +1,9 @@
 
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, get_user_model
+from django.contrib.auth import login, authenticate, get_user_model,logout
 from django.contrib import messages
-
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 User = get_user_model()
 
 def index(request):
@@ -10,23 +11,25 @@ def index(request):
 
 def about(request):
     return render(request, "about.html")
+User = get_user_model()
 
 def login_view(request):
+    message = None  
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("userpassword")
 
-        # Authenticate the user
         user = authenticate(request, username=username, password=password)
 
         if user:
             login(request, user)
             messages.success(request, "Login successful!")
-            return redirect("index")  # Redirect to index after login
+            return redirect("index")  
         else:
-            messages.error(request, "Invalid username or password")
+            message = "Invalid username or password"
 
-    return render(request, 'login.html')
+    return render(request, 'login.html', {"message": message})
+
 
 def sign_in(request):
     if request.method == "POST": 
@@ -45,3 +48,7 @@ def sign_in(request):
             messages.error(request, "Passwords do not match")
 
     return render(request, "signin.html")
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("index"))
