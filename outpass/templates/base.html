@@ -24,9 +24,15 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
                   </li>
+  
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'about'%}">About</a>
                   </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+                  </li>
+                  {% else %}
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Login
@@ -37,6 +43,7 @@
                         <li><a class="dropdown-item" href="{% url 'login' %}">Parent Login</a></li>
                     </ul>
                 </li>
+                {% endif %}
                 
                 </ul>
                 <span class="navbar-text">
