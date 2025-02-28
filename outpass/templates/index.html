@@ -7,11 +7,19 @@
         {% endfor %}
     {% endif %}
 
-    {% if user.is_authenticated %}
-        <h1 style="margin: 10px;">Welcome to SecuPass, {{ user.username }}</h1>
-    {% else %}
-        <h1 style="margin: 10px;">Welcome to SecuPass</h1>
-    {% endif %}
+    <div class="top-content">
+        {% if user.is_authenticated %}
+            <h1 class="welcome-message">Welcome to SecuPass, {{ user.username }}</h1>
+        {% else %}
+            <h1 class="welcome-message">Welcome to SecuPass</h1>
+        {% endif %}
+        <p>Your safety, our priority.</p>
+    </div>
 
-    <p>Your safety, our priority.</p>
+    <!-- Centered Apply Button -->
+    <div class="apply-container">
+        <a href="{% url 'apply' %}" class="btn btn-primary btn-lg shadow apply-btn">
+            Apply Now
+        </a>
+    </div>
 {% endblock %}

@@ -5,3 +5,23 @@
     margin: auto;
     
 }
+.apply-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; 
+    width: 100%;
+}
+
+.apply-btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    margin: 20px;
+}
+
+.apply-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}

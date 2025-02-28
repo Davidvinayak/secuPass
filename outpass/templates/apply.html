@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">Outpass Application Form</h2>
+        <form method="POST" action="{% url 'apply' %}">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" 
+                    value="{{ student.user_profile.user.username }}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="roll_number" class="form-label">Roll Number</label>
+                <input type="text" class="form-control" id="roll_number" name="roll_number" 
+                    value="{{ student.roll_number }}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" 
+                    value="{{ student.user_profile.user.email }}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="destination" class="form-label">Destination</label>
+                <input type="text" class="form-control" id="destination" name="destination" 
+                    placeholder="Enter your destination" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="reason" class="form-label">Reason for Outpass</label>
+                <textarea class="form-control" id="reason" name="reason" rows="3" 
+                    placeholder="Explain why you need an outpass" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="from_date" class="form-label">From Date</label>
+                <input type="date" class="form-control" id="from_date" name="from_date" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="to_date" class="form-label">To Date</label>
+                <input type="date" class="form-control" id="to_date" name="to_date" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
